@@ -5,6 +5,7 @@
 
 import requests
 import json
+
 from config import keys, headers
 
 
@@ -51,7 +52,7 @@ class Converter:
         url = f"https://api.apilayer.com/fixer/convert?to={base_ticket}&from={quote_ticket}&amount={amount}"
         # отправляем запрос
         r = requests.get(url, headers)
-        # извлекаем результат из json объекта
+        # извлекаем результат из json объекта, который содержит результат нашего запроса
         total = json.loads(r.content)['result']
         # возвращаем округленный результат
         return round(total, 2)
